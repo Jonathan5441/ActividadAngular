@@ -1,0 +1,15 @@
+<div style="display: flex;justify-content: center;align-content: center;">
+    <div class="card" style="width: 18rem">
+      <img src="{{ videojuego.imagen }}" class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">{{ videojuego.titulo }}</h5>
+        <p class="card-text">{{ videojuego.detalle }}</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Precio: {{ videojuego.precio }}</li>
+      </ul>
+      <div class="list-group list-group-flush">
+        <button [routerLink]="['/videojuegos']">Regresar</button>
+      </div>
+    </div>
+  </div>

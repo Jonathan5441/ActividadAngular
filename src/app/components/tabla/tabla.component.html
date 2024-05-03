@@ -1,0 +1,63 @@
+<div
+  class="input-group mb-3"
+  style="display: flex; justify-content: space-between"
+>
+  <div style="margin: 10px">
+    <form class="d-flex" role="search">
+      <input
+        class="form-control me-2"
+        type="search"
+        placeholder="Buscar"
+        aria-label="Search"
+      />
+      <button class="btn btn-outline-success" type="submit">Buscar</button>
+    </form>
+  </div>
+  <div style="display: flex; flex-direction: row; margin: 10px">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="filtro mayor"
+      aria-label="filtro"
+      [(ngModel)]="filtromayor"
+      style="margin: 5px"
+    />
+    <input
+      type="text"
+      class="form-control"
+      placeholder="filtro menor"
+      aria-label="filtro"
+      [(ngModel)]="filtromenor"
+      style="margin: 5px"
+    />
+  </div>
+</div>
+<table class="table table-sm table-ligth">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Titulo</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Imagen</th>
+      <th scope="col">Detalles</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (videojuego of videojuegos; track videojuego) { @if
+    (+videojuego.precio>=+filtromayor && + videojuego.precio<=+filtromenor) {
+    <tr>
+      <th scope="row">{{ videojuego.id }}</th>
+      <td>{{ videojuego.titulo }}</td>
+      <td>{{ videojuego.precio }}</td>
+      <td>
+        <img src="{{ videojuego.imagen }}" width="100" />
+      </td>
+      <td>
+        <button [routerLink]="['/videojuegos-detalles', videojuego.id]">
+          Detalles
+        </button>
+      </td>
+    </tr>
+    } }
+  </tbody>
+</table>
